@@ -1,0 +1,185 @@
+$dark-primary: #1d2029;
+$dark-secondary: #252b43;
+$dark-thirdary: #20222f;
+$dark-text: #feffff;
+$dark-text-muted: #919ab9;
+
+$light-primary: #f6f9fe;
+$light-text: #1c1f28;
+$light-secondary: #f0f3fa;
+$light-thirdary: #f8f9ff;
+$light-text-muted: #5f6273;
+
+@mixin theme($theme-name, $primary, $text, $secondary, $text-muted, $thirdary) {
+  .#{$theme-name} {
+    background-color: $primary;
+    position: relative;
+    .bonbonera {
+      position: absolute;
+      height: 200px;
+      width: 100%;
+      background-color: $thirdary;
+      z-index: -1;
+    }
+
+    .container {
+      .title {
+        h1 {
+          color: $text;
+        }
+        p {
+          color: $text-muted;
+        }
+        label {
+          color: $text-muted;
+        }
+      }
+      h2 {
+        color: $text;
+      }
+      .social-card {
+        background-color: $secondary;
+        &::before {
+          content: "";
+          height: 4px;
+          width: 100%;
+        }
+        &.facebook {
+          &::before {
+            background-color: #4267b2;
+          }
+
+          .icon {
+            color: #4267b2;
+          }
+        }
+
+        &.twitter {
+          &::before {
+            background-color: #1da1f2;
+          }
+
+          .icon {
+            color: #1da1f2;
+          }
+        }
+
+        &.instagram {
+          &::before {
+            background-image: linear-gradient(
+              45deg,
+              #f09433 0%,
+              #e6683c 25%,
+              #dc2743 50%,
+              #cc2366 75%,
+              #bc1888 100%
+            );
+          }
+
+          .icon {
+            background: linear-gradient(
+              45deg,
+              #f09433 0%,
+              #e6683c 25%,
+              #dc2743 50%,
+              #cc2366 75%,
+              #bc1888 100%
+            );
+          }
+        }
+
+        &.youtube {
+          &::before {
+            background-color: #ff0000;
+          }
+
+          .icon {
+            color: #ff0000;
+          }
+        }
+        .card-header {
+          --bs-card-cap-bg: rgba(0, 0, 0, 0);
+          i {
+            font-size: 28px;
+            line-height: 24px;
+          }
+          span {
+            color: $text-muted;
+          }
+        }
+        .card-body {
+          .card-title {
+            color: $text;
+          }
+          .card-subtitle {
+            color: $text-muted;
+            letter-spacing: 3px;
+            text-transform: capitalize;
+          }
+        }
+        .icon {
+          font-size: 25px;
+          line-height: 20px;
+        }
+
+        .card-footer {
+          --bs-card-cap-bg: rgba(0, 0, 0, 0);
+          color: #34a48c;
+        }
+      }
+      .overview-card {
+        .card-header {
+          --bs-card-cap-bg: rgba(0, 0, 0, 0);
+          i {
+            font-size: 28px;
+            line-height: 24px;
+          }
+          span {
+            color: $text-muted;
+          }
+        }
+        background-color: $secondary;
+        &.facebook {
+          .card-header {
+            .icon {
+              color: #4267b2;
+            }
+          }
+        }
+        .icon {
+          font-size: 25px;
+          line-height: 20px;
+        }
+        .card-body > div {
+          color: #34a48c;
+        }
+      }
+    }
+  }
+}
+
+@include theme(
+  theme-dark,
+  $dark-primary,
+  $dark-text,
+  $dark-secondary,
+  $dark-text-muted,
+  $dark-thirdary
+);
+@include theme(
+  theme-light,
+  $light-primary,
+  $light-text,
+  $light-secondary,
+  $light-text-muted,
+  $light-thirdary
+);
+
+@media (width < 768px) {
+  .title-text::after {
+    content: "";
+    height: 1px;
+    width: 100%;
+    background-color: white;
+  }
+}
